@@ -71,6 +71,9 @@ map \x :execute 'bd'<CR>
 map \D :call b:close_diff()<CR> 
 map <F1> :execute 'FufBuffer'<CR>
 map <F2> :execute 'FufFile **/'<CR> 
+"adding CTRL+C and CTRL+V copy paste mapping from windows clipboard
+vnoremap <C-c> "*y 
+vnoremap <C-v> "*p
 
 let Tlist_Ctags_Cmd = "c:/tools/ctags58/ctags.exe"
 let Tlist_WinWidth = 40
