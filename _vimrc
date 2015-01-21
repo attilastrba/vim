@@ -1,4 +1,6 @@
+set langmenu=en_US.UTF-8
 syntax on
+
 set nocompatible
 "set guifont=Courier:h10
 set guifont=Lucida\ Console:h9
@@ -27,8 +29,8 @@ set smartindent
 set autowrite			" Automatically save before commands like :next and :make
 set vb            " visual beep
 set nowrap
-set guioptions-=T
-set guioptions-=m
+"set guioptions-=T
+"set guioptions-=m
 set runtimepath+=c:/Users/attila.strba/vimfiles/
 set tags=./tags;  " search for tags file in the current file's directory and up to the root
 call pathogen#runtime_append_all_bundles() 
@@ -36,6 +38,8 @@ call pathogen#helptags()
 
 set background=dark
 colorscheme solarized
+
+
 
 "colorscheme vividchalk
 
@@ -74,6 +78,7 @@ map <F2> :execute 'FufFile **/'<CR>
 "adding CTRL+C and CTRL+V copy paste mapping from windows clipboard
 vnoremap <C-c> "*y 
 vnoremap <C-v> "*p
+
 
 let Tlist_Ctags_Cmd = "c:/tools/ctags58/ctags.exe"
 let Tlist_WinWidth = 40
