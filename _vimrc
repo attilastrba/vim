@@ -21,8 +21,8 @@ set dictionary+=/usr/share/dict/words
 set history=1000	" keep 1000 lines of command line history
 set ruler		      " show the cursor position all the time
 set showcmd
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set smarttab
 set smartindent
@@ -40,6 +40,20 @@ set background=dark
 colorscheme solarized
 
 
+"start VIM as a maximized window
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window (for an alternative on Windows, see simalt below).
+  set lines=999 columns=999
+else
+  " This is console Vim.
+  if exists("+lines")
+    set lines=50
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
+endif
 
 "colorscheme vividchalk
 
@@ -68,6 +82,11 @@ let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
 let g:solarized_underline=0
 
+"enter new line by pressing enter or shift enter to put it aboce
+"nmap <S-Enter> O<Esc>
+"nmap <CR> o<Esc>
+"this should open the nerdtree where the file is located http://superuser.com/questions/195022/vim-how-to-synchronize-nerdtree-with-current-opened-tab-file-path
+map <C-o> :NERDTreeToggle %<CR>
 map \d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map \f :execute 'NERDTreeFind'<CR>
 map \c :execute 'BD'<CR>
@@ -78,6 +97,22 @@ map <F2> :execute 'FufFile **/'<CR>
 "adding CTRL+C and CTRL+V copy paste mapping from windows clipboard
 vnoremap <C-c> "*y 
 vnoremap <C-v> "*p
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+
+"replaces spaces instead of tabs with ,s 
+ augroup cpp " {{{
+          autocmd!
+          autocmd bufenter *.cpp nnoremap ,s :call UseSpacesNotTabs()<CR>:w<CR>:echo "tabs->spaces"<CR>
+        augroup END " }}}
+        function! UseSpacesNotTabs() " {{{
+          set expandtab
+          retab!
+        endfunction " }}}
 
 
 let Tlist_Ctags_Cmd = "c:/tools/ctags58/ctags.exe"
