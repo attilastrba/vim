@@ -102,8 +102,11 @@ nnoremap <S-Tab> <<_
 inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
-
-
+"restoring maximisation of windows
+nnoremap <C-W>O :MaximizerToggle<CR>
+nnoremap <C-W>o :MaximizerToggle<CR>
+"copy file name to the clipboard
+nmap cp :let @* = expand("%")
 "replaces spaces instead of tabs with ,s 
  augroup cpp " {{{
           autocmd!
@@ -144,4 +147,8 @@ autocmd BufNewFile,BufReadPost *.ect set filetype=rtext
 autocmd BufNewFile,BufReadPost *.tpl set filetype=eruby
 autocmd BufNewFile,BufReadPost *.rb,*.tpl setlocal omnifunc=g:MMComplete
 autocmd BufRead,BufNewFile     *.wiki set filetype=mediawiki
+
+
+
+
 
