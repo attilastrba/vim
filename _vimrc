@@ -35,7 +35,7 @@ set runtimepath+=c:/Users/attila.strba/vimfiles/
 set tags=./tags;  " search for tags file in the current file's directory and up to the root
 call pathogen#runtime_append_all_bundles() 
 call pathogen#helptags() 
-
+set cursorline 
 set background=dark
 colorscheme solarized
 
@@ -94,6 +94,10 @@ map \x :execute 'bd'<CR>
 map \D :call b:close_diff()<CR> 
 map <F1> :execute 'FufBuffer'<CR>
 map <F2> :execute 'FufFile **/'<CR> 
+map <F12> "*
+"open a tag in vertical spli
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 "adding CTRL+C and CTRL+V copy paste mapping from windows clipboard
 vnoremap <C-c> "*y 
 vnoremap <C-v> "*p
@@ -117,6 +121,15 @@ nmap cp :let @* = expand("%")
           retab!
         endfunction " }}}
 
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
 
 let Tlist_Ctags_Cmd = "c:/tools/ctags58/ctags.exe"
 let Tlist_WinWidth = 40
@@ -129,7 +142,7 @@ let Tlist_Inc_Winwidth = 0
 
 map <F4> :TlistToggle<cr>
 
-map <F8> :!c:/tools/ctags58/ctags.exe -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F8> :!c:/tools/ctags58/ctags.exe -R --c++-kinds=+p --fields=+iaS --extra=+q --extra=+f .<CR>
 
 let $PATH=$PATH.";c:/tools/Ruby193/bin"
 "let $PATH=$PATH.";c:/tools/rubydevkit-tdm-32-4.5.2/mingw/bin"
