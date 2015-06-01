@@ -82,6 +82,7 @@ let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
 let g:solarized_underline=0
 
+
 "enter new line by pressing enter or shift enter to put it aboce
 "nmap <S-Enter> O<Esc>
 "nmap <CR> o<Esc>
@@ -107,7 +108,6 @@ inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 "restoring maximisation of windows
-nnoremap <C-W>O :MaximizerToggle<CR>
 nnoremap <C-W>o :MaximizerToggle<CR>
 "copy file name to the clipboard
 nmap cp :let @* = expand("%")
